@@ -152,8 +152,52 @@ $google_recaptcha_v2->jsonErrors();
 >       "success": false,
 >       "response": 4000,
 >       "var": "h-captcha-response",
->       "description": "g-recaptcha-response",
->       "more_info": "{\"success\":false,\"error-codes\":[\"missing-input-response\",\"missing-input-secret\"]}",
+>       "description": "INVALID G-recaptcha-response",
+>       "more_info": "missing-input-response",
+>       "error_details": ""
+>   }
+>```
+> 
+>```json
+>   {
+>       "success": false,
+>       "response": 4000,
+>       "var": "g-recaptcha-response",
+>       "description": "INVALID G-recaptcha-response",
+>       "more_info": "invalid-hostname",
+>       "error_details": ""
+>   }
+>```
+> 
+>```json
+>   {
+>       "success": false,
+>       "response": 4000,
+>       "var": "g-recaptcha-response",
+>       "description": "INVALID G-recaptcha-response",
+>       "more_info": "missing-input-response",
+>       "error_details": ""
+>   }
+>```
+> 
+>```json
+>   {
+>       "success": false,
+>       "response": 4000,
+>       "var": "g-recaptcha-response",
+>       "description": "INVALID G-recaptcha-response",
+>       "more_info": "invalid-action",
+>       "error_details": ""
+>   }
+>```
+> 
+>```json
+>   {
+>       "success": false,
+>       "response": 4000,
+>       "var": "g-recaptcha-response",
+>       "description": "INVALID G-recaptcha-response",
+>       "more_info": "score-is-low",
 >       "error_details": ""
 >   }
 >```
@@ -165,7 +209,7 @@ $google_recaptcha_v2->jsonErrors();
 >       "success": false,
 >       "response": 1000,
 >       "var": "g-recaptcha-response",
->       "description": "MISSING g-recaptcha-response",
+>       "description": "MISSING G-recaptcha-response",
 >       "more_info": "",
 >       "error_details": ""
 >   }
