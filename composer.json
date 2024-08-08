@@ -1,6 +1,6 @@
 {  "name": "maatify/google-recaptcha-v2",
   "description": "Unofficial Google Recaptcha V2 for PHP it's library for maatify.dev Google Recaptcha V2 handler, known by our team",
-  "version": "1.0.0004",
+  "version": "1.0.0005",
   "type": "library",
   "keywords": [
     "PHP",
