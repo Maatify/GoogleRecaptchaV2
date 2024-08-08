@@ -175,17 +175,6 @@ $google_recaptcha_v2->jsonErrors();
 >       "response": 4000,
 >       "var": "g-recaptcha-response",
 >       "description": "INVALID G-recaptcha-response",
->       "more_info": "missing-input-response",
->       "error_details": ""
->   }
->```
-> 
->```json
->   {
->       "success": false,
->       "response": 4000,
->       "var": "g-recaptcha-response",
->       "description": "INVALID G-recaptcha-response",
 >       "more_info": "invalid-action",
 >       "error_details": ""
 >   }
