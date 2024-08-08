@@ -33,6 +33,9 @@ $secret_key = '0x0000000000000000000000000000000000000000';
 
 $google_recaptcha_v2 = GoogleReCaptchaV2PublisherProValidation::getInstance($secret_key);
 
+// ===== if you want to validate domain use
+$google_recaptcha_v2->setHostname('maatify.dev');
+
 // ===== get result in array format
 $result = $google_recaptcha_v2->getResponse();
 
