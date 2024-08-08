@@ -5,12 +5,12 @@
  * @Project   HCaptcha
  * @copyright ©2024 Maatify.dev
  * @see       https://www.maatify.dev Visit Maatify.dev
- * @link      https://github.com/Maatify/HCaptcha View project on GitHub
- * @link      https://docs.hcaptcha.com/ Visit hCaptcha Website
- * @since     2023-08-07 10:50 PM
+ * @link      https://github.com/Maatify/GoogleRecaptchaV2 View project on GitHub
+ * @link      https://developers.google.com/recaptcha/docs/display Visit hCaptcha Website
+ * @since     2023-08-07 5:19 PM
  * @author    Mohamed Abdulalim (megyptm) <mohamed@maatify.dev>
- * @Maatify   HCaptcha :: HCaptchaRequestCall
- * @note      This Project using for Call HCaptcha Validation
+ * @Maatify   GoogleRecaptchaV2 :: CurlHandle
+ * @note      This Project using for Call Google Recaptcha V2 Validation
  *
  * This program is distributed in the hope that it will be useful - WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or

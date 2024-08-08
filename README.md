@@ -25,13 +25,22 @@ composer require maatify/google-recaptcha-v2
  * https://www.Maatify.dev
  */
  
-use Maatify\GoogleRecaptchaV2\GoogleReCaptchaV2PublisherProValidation;
+use Maatify\GoogleRecaptchaV2\GoogleReCaptchaV2Validation;
 
 require 'vendor/autoload.php';
 
 $secret_key = '0x0000000000000000000000000000000000000000';
 
-$google_recaptcha_v2 = GoogleReCaptchaV2PublisherProValidation::getInstance($secret_key);
+$google_recaptcha_v2 = GoogleReCaptchaV2Validation::getInstance($secret_key);
+
+// ===== if you want to validate domain use
+$google_recaptcha_v2->setHostname('maatify.dev');
+
+// ===== if you want to validate score (invisible only)
+$google_recaptcha_v2->setScore(0.5);
+
+// ===== if you want to validate action (invisible only)
+$google_recaptcha_v2->setAction('login');
 
 // ===== if you want to validate domain use
 $google_recaptcha_v2->setHostname('maatify.dev');
@@ -107,6 +116,26 @@ $google_recaptcha_v2->jsonErrors();
 >        
 >        )
 
+>       Array
+>        (
+>            [success] =>
+>            [error-codes] => Array
+>            (
+>                [0] => invalid-action
+>            )
+>        
+>        )
+
+>       Array
+>        (
+>            [success] =>
+>            [error-codes] => Array
+>            (
+>                [0] => score-is-low
+>            )
+>        
+>        )
+
 
 #### isSuccess();
 >return true || false
@@ -146,7 +175,8 @@ $google_recaptcha_v2->jsonErrors();
 >```
 
 
-### Create From in HTML Code Visible 
+### Create From in HTML Code 
+#### Visible recaptcha
 ```html
 <form action="process.php" method="POST">
     <form method="POST">
@@ -156,4 +186,25 @@ $google_recaptcha_v2->jsonErrors();
     </form>
 
     <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
+```
+
+#### Invisible recaptcha
+```html
+<script src="https://www.google.com/recaptcha/api.js?hl=ar"></script>
+
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
+</script>
+
+
+<form method="POST" id="demo-form">
+    <input name="test" value="test">
+    <button class="g-recaptcha"
+            data-sitekey="__YOUR_SITE_KEY__"
+            data-callback='onSubmit'
+            data-action='__YOUR_ACTION__'>Submit</button>
+
+</form>
 ```

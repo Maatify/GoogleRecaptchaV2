@@ -5,12 +5,12 @@
  * @Project   HCaptcha
  * @copyright ©2024 Maatify.dev
  * @see       https://www.maatify.dev Visit Maatify.dev
- * @link      https://github.com/Maatify/HCaptcha View project on GitHub
- * @link      https://docs.hcaptcha.com/ Visit hCaptcha Website
- * @since     2023-08-07 11:00 PM
+ * @link      https://github.com/Maatify/GoogleRecaptchaV2 View project on GitHub
+ * @link      https://developers.google.com/recaptcha/docs/display Visit hCaptcha Website
+ * @since     2023-08-08 5:19 PM
  * @author    Mohamed Abdulalim (megyptm) <mohamed@maatify.dev>
- * @Maatify   HCaptcha :: HCaptchaPublisherProValidation
- * @note      This Project using for Call HCaptcha Validation
+ * @Maatify   GoogleRecaptchaV2 :: GoogleReCaptchaV2Validation
+ * @note      This Project using for Call Google ReCaptcha V2 Validation
  *
  * This program is distributed in the hope that it will be useful - WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
@@ -22,16 +22,21 @@ namespace Maatify\GoogleRecaptchaV2;
 
 use Maatify\Json\Json;
 
-class GoogleReCaptchaV2PublisherProValidation extends GoogleReCaptchaV2RequestCall
+class GoogleReCaptchaV2Validation extends GoogleReCaptchaV2RequestCall
 {
     const E_HOSTNAME_INVALID = 'invalid-hostname';
     const E_MISSING_INPUT_RESPONSE = 'missing-input-response';
+    const E_ACTION_INVALID = 'invalid-action';
+    const E_SCORE_INVALID = 'score-is-low';
+
     public ?bool $success = null;
     public array $response = [];
 
     private static ?self $instance = null;
     private string $remote_ip = '';
     private string $hostname = '';
+    private string $action = '';
+    private float $score = 0.1;
 
     public static function getInstance(string $secret_key = ''): self
     {
@@ -54,6 +59,18 @@ class GoogleReCaptchaV2PublisherProValidation extends GoogleReCaptchaV2RequestCa
         return $this;
     }
 
+    public function setAction(string $action): static
+    {
+        $this->action = $action;
+        return $this;
+    }
+
+    public function setScore(float $score): static
+    {
+        $this->score = $score;
+        return $this;
+    }
+
     private function hasError(array $errors): void
     {
         $this->success = false;
@@ -73,10 +90,6 @@ class GoogleReCaptchaV2PublisherProValidation extends GoogleReCaptchaV2RequestCa
                 'response' => $_POST['g-recaptcha-response'],
             );
 
-//            if(!empty($this->remote_ip)){
-//                $params['remoteip'] = $this->remote_ip;
-//            }
-
 
             $response_data = $this->curlPost($params);
             $this->response = (array)$response_data;
@@ -90,6 +103,21 @@ class GoogleReCaptchaV2PublisherProValidation extends GoogleReCaptchaV2RequestCa
                         $validation_errors[] = self::E_HOSTNAME_INVALID;
                     }
                 }
+
+                if(!empty($this->score) && isset($response_data->score)){
+                    if($response_data->score < $this->score){
+                        $this->success = false;
+                        $validation_errors[] = self::E_SCORE_INVALID;
+                    }
+                }
+
+                if(!empty($this->action) && isset($response_data->action)){
+                    if($response_data->action !== $this->action){
+                        $this->success = false;
+                        $validation_errors[] = self::E_ACTION_INVALID;
+                    }
+                }
+
             }
 
             if(!empty($validation_errors)){
