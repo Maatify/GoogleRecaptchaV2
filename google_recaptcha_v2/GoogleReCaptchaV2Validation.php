@@ -144,10 +144,10 @@ class GoogleReCaptchaV2Validation extends GoogleReCaptchaV2RequestCall
             Json::Missing('g-recaptcha-response');
         }
         if (! $this->validate()) {
-            if(!empty($this->response['error-codes'][0])){
-                Json::Invalid('g-recaptcha-response', $this->response['error-codes'][0]);
+            if (! empty($this->response['error-codes'][0])) {
+                Json::captchaInvalid($this->response, $this->response['error-codes'][0]?? '',  __LINE__);
             }
-            Json::Invalid('g-recaptcha-response', Json::JsonFormat($this->response));
+            Json::captchaInvalid($this->response, Json::JsonFormat($this->response),  __LINE__);
         }
     }
 
