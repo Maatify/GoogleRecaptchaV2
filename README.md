@@ -42,9 +42,6 @@ $google_recaptcha_v2->setScore(0.5);
 // ===== if you want to validate action (invisible only)
 $google_recaptcha_v2->setAction('login');
 
-// ===== if you want to validate domain use
-$google_recaptcha_v2->setHostname('maatify.dev');
-
 // ===== get result in array format
 $result = $google_recaptcha_v2->getResponse();
 
