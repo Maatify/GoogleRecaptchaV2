@@ -148,47 +148,71 @@ $google_recaptcha_v2->jsonErrors();
 > - on validation error
 > 
 >```json
->   {
->       "success": false,
->       "response": 4000,
->       "var": "h-captcha-response",
->       "description": "INVALID G-recaptcha-response",
->       "more_info": "missing-input-response",
->       "error_details": ""
->   }
+>{
+>  "success": false,
+>  "response": 40002,
+>  "var": "captcha",
+>  "description": {
+>    "success": false,
+>    "error-codes": [
+>      "missing-input-response"
+>    ],
+>    "messages": []
+>  },
+>  "more_info": "missing-input-response",
+>  "error_details": "test:72"
+>}
 >```
-> 
+>
 >```json
->   {
->       "success": false,
->       "response": 4000,
->       "var": "g-recaptcha-response",
->       "description": "INVALID G-recaptcha-response",
->       "more_info": "invalid-hostname",
->       "error_details": ""
->   }
+>{
+>  "success": false,
+>  "response": 40002,
+>  "var": "captcha",
+>  "description": {
+>    "success": false,
+>    "error-codes": [
+>      "invalid-hostname"
+>    ],
+>    "messages": []
+>  },
+>  "more_info": "invalid-hostname",
+>  "error_details": "test:72"
+>}
 >```
-> 
+>
 >```json
->   {
->       "success": false,
->       "response": 4000,
->       "var": "g-recaptcha-response",
->       "description": "INVALID G-recaptcha-response",
->       "more_info": "invalid-action",
->       "error_details": ""
->   }
+>{
+>  "success": false,
+>  "response": 40002,
+>  "var": "captcha",
+>  "description": {
+>    "success": false,
+>    "error-codes": [
+>      "invalid-action"
+>    ],
+>    "messages": []
+>  },
+>  "more_info": "invalid-action",
+>  "error_details": "test:72"
+>}
 >```
-> 
+>
 >```json
->   {
->       "success": false,
->       "response": 4000,
->       "var": "g-recaptcha-response",
->       "description": "INVALID G-recaptcha-response",
->       "more_info": "score-is-low",
->       "error_details": ""
->   }
+>{
+>  "success": false,
+>  "response": 40002,
+>  "var": "captcha",
+>  "description": {
+>    "success": false,
+>    "error-codes": [
+>      "score-is-low"
+>    ],
+>    "messages": []
+>  },
+>  "more_info": "score-is-low",
+>  "error_details": "test:72"
+>}
 >```
 > 
 > - on missing or empty `$_POST['g-recaptcha-response']`
